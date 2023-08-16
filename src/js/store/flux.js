@@ -181,7 +181,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// Analizar la respuesta como JSON y devolver los datos
 					const data = await response.json()
 					peopleById = data.result
-					console.log(peopleById)
 					setStore({peopleById})
 					} catch (error) {
 					// Manejar errores
@@ -237,19 +236,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const nombres = store.favorites.map((elemento)=>elemento.name)
 				
 				if(nombres.includes(item.name)){
-					console.log(item)
 					const actions = getActions()
 					actions.deleteFavorites(item.name)
 				}else{
 					setStore({
                         favorites: [...store.favorites, item]
                     })
-                    console.log(store.favorites)
 				}
 			},
 			
 			deleteFavorites : (nombre) =>{
-				console.log(nombre);
 				const store = getStore();
 				const fav = store.favorites;
 				const favoriteActualizado = fav.filter((item) => item.name !== nombre )

@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 export const Card = (props) =>{ 
     const { store, actions } = useContext(Context);
     const {name,img, gender, hair_color, eye_color,uid} = props.datos
+    const nombres = store.favorites.map((elemento)=>elemento.name)
+			
 
   return (
 	<div className="card col-3">
@@ -19,7 +21,7 @@ export const Card = (props) =>{
     <Link to ={`/characters/${uid}`}>
     <button className="btn btn-light">Learn more!</button>
     </Link>
-	<a className="btn btn-light" onClick={()=>actions.getfavorites({name})}><i className="far fa-heart" style={{color:"red"}}></i></a>
+	<a className="btn btn-light" onClick={()=>actions.getfavorites({name})}><i className={`fas fa-heart ${nombres.includes(name)? "like":""}`} ></i></a>
    </div>
   </div>
 </div>

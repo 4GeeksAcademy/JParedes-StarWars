@@ -5,8 +5,9 @@ import { Context } from "../store/appContext";
 
 export const CardPlanet = (props) =>{ 
 
-  const { actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const {name,img,population,terrain,uid} = props.datos
+  const nombres = store.favorites.map((elemento)=>elemento.name)
 
 function errorImage(e){
 e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
@@ -25,7 +26,7 @@ e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
     <Link to ={`/planets/${uid}`}>
     <button className="btn btn-light mx-3">Learn more!</button>
     </Link>
-	<a  className="btn btn-light mx-3" onClick={()=>actions.getfavorites({name})}><i className="far fa-heart"></i></a>
+	<a  className="btn btn-light mx-3" onClick={()=>actions.getfavorites({name})}><i className={`fas fa-heart ${nombres.includes(name)? "like":""}`}></i></a>
   </div>
 </div>
 );
