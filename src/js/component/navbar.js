@@ -16,8 +16,8 @@ export const Navbar = () => {
    			 Favorites <span className="badge bg-warning">{store.favorites.length}</span>
   			</button> 
   			<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-				{(store.favorites && store.favorites.length > 0 && store.favorites.map((i)=>(
-					<li className="d-flex"><a className="dropdown-item px-0">{i.name}</a> <i className="fas fa-trash me-3 pt-2" onClick={()=>actions.deleteFavorites(i.name)}></i></li>
+				{(store.favorites && store.favorites.length > 0 && store.favorites.map((i,item)=>(
+					<li key ={item} className="d-flex"><a className="dropdown-item px-0">{i.name}</a> <i className="fas fa-trash me-3 pt-2" onClick={()=>actions.deleteFavorites(i.name)}></i></li>
 				)))}
 				
   			</ul>
