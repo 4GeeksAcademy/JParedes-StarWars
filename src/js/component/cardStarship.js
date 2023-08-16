@@ -3,10 +3,10 @@ import "../../styles/home.css";
 import {Link} from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const CardPlanet = (props) =>{ 
+export const CardStarship = (props) =>{ 
 
   const { actions } = useContext(Context);
-  const {name,img,population,terrain,uid} = props.datos
+  const {name,img,model,passengers,uid} = props.datos
 
 function errorImage(e){
 e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
@@ -18,11 +18,11 @@ e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"
    <img src={img} onError={errorImage} className="card-img-top" style ={{maxHeight:"230px"}}/>
   <div className="card-body  pb-0 mb-2">
     <h5 className="card-title"><b>{name}</b></h5>
-    <p className="card-text">Population : {population}</p>
-    <p className="card-text">Terrain : {terrain}</p>
+    <p className="card-text">Model : {model}</p>
+    <p className="card-text">Passengers : {passengers}</p>
     </div>
     <div className="d-flex justify-content-between bg-secondary pb-4">
-    <Link to ={`/planets/${uid}`}>
+    <Link to ={`/starships/${uid}`}>
     <button className="btn btn-light mx-3">Learn more!</button>
     </Link>
 	<a  className="btn btn-light mx-3" onClick={()=>actions.getfavorites({name})}><i className="far fa-heart"></i></a>
